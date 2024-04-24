@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Web-Safari.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
