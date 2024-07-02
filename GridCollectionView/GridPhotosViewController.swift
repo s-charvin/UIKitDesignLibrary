@@ -19,6 +19,31 @@ final class GridPhotosViewController: UICollectionViewController {
     // 测试用的可选元素
     private let flickr = Flickr() // 图片搜索服务示例
     // navigationBar
+    lazy var navigationBar: UINavigationBar = {
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        let navItem = UINavigationItem()
+
+        let searchTextField = UITextField()
+        searchTextField.placeholder = "Search    " // 空格用于填充
+        searchTextField.returnKeyType = .search
+        searchTextField.delegate = self
+        navItem.titleView = searchTextField
+
+        let searchButton = UIBarButtonItem(
+            barButtonSystemItem: .search,
+            target: self,
+            action: #selector(searchButtonTapped)
+        )
+        navItem.rightBarButtonItem = searchButton
+        navBar.setItems([navItem], animated: false)
+        navBar.layer.cornerRadius = 10
+        navBar.layer.masksToBounds = true
+        navBar.layer.shadowColor = UIColor.black.cgColor
+        navBar.layer.shadowOffset = CGSize(width: 0, height: 2)
+        navBar.layer.shadowRadius = 4
+        navBar.layer.shadowOpacity = 0.5
+        return navBar
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +60,13 @@ final class GridPhotosViewController: UICollectionViewController {
             GridPhotoCell.self,
             forCellWithReuseIdentifier: GridPhotoCell.reuseIdentifier
         )
-        self.collectionView.register(GridHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: GridHeaderView.reuseIdentifier)
+        self.collectionView.register(
+            GridHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: GridHeaderView.reuseIdentifier
+        )
 
-      self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
 
         self.view.addSubview(self.navigationBar)
         self.view.addSubview(self.collectionView)
@@ -81,16 +110,16 @@ final class GridPhotosViewController: UICollectionViewController {
                 activityIndicator.removeFromSuperview()
 
                 switch searchResults {
-                    case let .failure(error):
-                        print("Error Searching: \(error)")
-                    case let .success(results):
-                        print("""
+                case let .failure(error):
+                    print("Error Searching: \(error)")
+                case let .success(results):
+                    print("""
                         Found \(results.searchResults.count) \
                         matching \(results.searchTerm)
                         """)
-                        self.dataList.insert(results, at: 0)
+                    self.dataList.insert(results, at: 0)
 
-                        self.collectionView?.reloadData()
+                    self.collectionView?.reloadData()
                 }
             }
         }
@@ -98,28 +127,6 @@ final class GridPhotosViewController: UICollectionViewController {
         textField.text = nil
         textField.resignFirstResponder()
     }
-
-    lazy var navigationBar: UINavigationBar = {
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
-        let navItem = UINavigationItem()
-
-        let searchTextField = UITextField()
-        searchTextField.placeholder = "Search    " // 空格用于填充
-        searchTextField.returnKeyType = .search
-        searchTextField.delegate = self
-        navItem.titleView = searchTextField
-
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped))
-        navItem.rightBarButtonItem = searchButton
-        navBar.setItems([navItem], animated: false)
-        navBar.layer.cornerRadius = 10
-        navBar.layer.masksToBounds = true
-        navBar.layer.shadowColor = UIColor.black.cgColor
-        navBar.layer.shadowOffset = CGSize(width: 0, height: 2)
-        navBar.layer.shadowRadius = 4
-        navBar.layer.shadowOpacity = 0.5
-        return navBar
-    }()
 }
 
 // MARK: - Private
@@ -173,18 +180,18 @@ extension GridPhotosViewController {
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
         switch kind {
-            case UICollectionView.elementKindSectionHeader:
-                let headerView = collectionView.dequeueReusableSupplementaryView(
-                    ofKind: kind,
-                    withReuseIdentifier: "\(GridHeaderView.self)",
-                    for: indexPath)
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "\(GridHeaderView.self)",
+                for: indexPath)
 
-                guard let typedHeaderView = headerView as? GridHeaderView else { return headerView }
-                let searchTerm = self.dataList[indexPath.section].searchTerm
-                typedHeaderView.setTitle(searchTerm)
-                return headerView
-            default:
-                assert(false, "Invalid element type")
+            guard let typedHeaderView = headerView as? GridHeaderView else { return headerView }
+            let searchTerm = self.dataList[indexPath.section].searchTerm
+            typedHeaderView.setTitle(searchTerm)
+            return headerView
+        default:
+            assert(false, "Invalid element type")
         }
     }
 }

@@ -11,8 +11,8 @@ class DesignCodeAppHomePageViewController: UIViewController, ViperView {
     var eventHandler: ViperViewEventHandler?
     var viewDataSource: ViperPresenter?
 
-    let heroView = HeroView()
-    let bookView = BookView()
+    let heroView = DesignCodeAppHeroView()
+    let bookView = DesignCodeAppBookView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,4 +47,3 @@ class DesignCodeAppHomePageViewController: UIViewController, ViperView {
         ])
     }
 }
-

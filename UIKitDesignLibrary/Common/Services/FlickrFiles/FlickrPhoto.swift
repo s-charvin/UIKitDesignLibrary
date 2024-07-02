@@ -8,6 +8,11 @@
 import UIKit
 
 class FlickrPhoto: Equatable {
+    enum PhotoError: Error {
+        case invalidURL
+        case noData
+    }
+
     var thumbnail: UIImage?
     var largeImage: UIImage?
     let photoID: String
@@ -22,16 +27,15 @@ class FlickrPhoto: Equatable {
         self.secret = secret
     }
 
+    static func == (lhs: FlickrPhoto, rhs: FlickrPhoto) -> Bool {
+        return lhs.photoID == rhs.photoID
+    }
+
     func flickrImageURL(_ size: String = "m") -> URL? {
         if let url = URL(string: "https://farm\(farm).staticflickr.com/\(server)/\(photoID)_\(secret)_\(size).jpg") {
             return url
         }
         return nil
-    }
-
-    enum PhotoError: Error {
-        case invalidURL
-        case noData
     }
 
     func loadLargeImage(_ completion: @escaping (Result<FlickrPhoto, PhotoError>) -> Void) {
@@ -86,9 +90,5 @@ class FlickrPhoto: Equatable {
         }
 
         return returnSize
-    }
-
-    static func ==(lhs: FlickrPhoto, rhs: FlickrPhoto) -> Bool {
-        return lhs.photoID == rhs.photoID
     }
 }

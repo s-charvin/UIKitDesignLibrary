@@ -7,7 +7,7 @@ class DesignCodeAppHomePageModuleBuilder: ViperBuilder {
         let interactor: ViperInteractor = DesignCodeAppHomePageInteractor()
         let wireframe: ViperWireframe = DesignCodeAppHomePageWireframe()
 
-        DesignCodeAppHomePageModuleBuilder.viperAssemble(
+        self.viperAssemble(
             for: viewController,
             presenter: presenter,
             interactor: interactor,
@@ -16,4 +16,3 @@ class DesignCodeAppHomePageModuleBuilder: ViperBuilder {
         return viewController
     }
 }
-

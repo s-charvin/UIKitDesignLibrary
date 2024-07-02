@@ -47,7 +47,7 @@ class GridPhotoWithInteractCell: UICollectionViewCell {
             self.imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
 
             self.activityIndicator.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.activityIndicator.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            self.activityIndicator.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
         ])
     }
 }
@@ -81,7 +81,7 @@ class GridHeaderWithInteractView: UICollectionReusableView {
             self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])
     }
 

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4A97A3709A51CD1FFD2D72D6 /* Pods_UIKitDesignLibrary_UIKitDesignLibraryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD6B62CC9F4FB8D7D0258C6 /* Pods_UIKitDesignLibrary_UIKitDesignLibraryUITests.framework */; };
+		680C54192BFC8E61000B0DAB /* MyCategoryViewContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C54182BFC8E61000B0DAB /* MyCategoryViewContainerView.swift */; };
+		6853B3EF2BEB1CFE007AC577 /* MyCategoryTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6853B3EE2BEB1CFE007AC577 /* MyCategoryTestViewController.swift */; };
+		6853B3F12BEB33C6007AC577 /* MyCategoryViewTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6853B3F02BEB33C6007AC577 /* MyCategoryViewTabView.swift */; };
+		6873349F2BEB562000343ADD /* MyCategoryViewBaseTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6873349E2BEB562000343ADD /* MyCategoryViewBaseTab.swift */; };
+		687334A12BEB567400343ADD /* MyCategoryViewTitleTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687334A02BEB567400343ADD /* MyCategoryViewTitleTab.swift */; };
 		6893F4072BC9622A00A958D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6893F4062BC9622A00A958D6 /* AppDelegate.swift */; };
 		6893F4092BC9622A00A958D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6893F4082BC9622A00A958D6 /* SceneDelegate.swift */; };
 		6893F4102BC9622C00A958D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6893F40F2BC9622C00A958D6 /* Assets.xcassets */; };
@@ -46,8 +51,8 @@
 		68E229C62BD6B9E800A37EDA /* DesignCodeAppHomePageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E229B92BD6B9E800A37EDA /* DesignCodeAppHomePageBuilder.swift */; };
 		68E229C82BD6B9E800A37EDA /* DesignCodeAppHomePageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E229BC2BD6B9E800A37EDA /* DesignCodeAppHomePageInteractor.swift */; };
 		68E229C92BD6B9E800A37EDA /* DesignCodeAppHomePageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E229BD2BD6B9E800A37EDA /* DesignCodeAppHomePageDataSource.swift */; };
-		68E229CB2BD76DAC00A37EDA /* HeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E229CA2BD76DAC00A37EDA /* HeroView.swift */; };
-		68E229CD2BD76DBA00A37EDA /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E229CC2BD76DBA00A37EDA /* BookView.swift */; };
+		68E229CB2BD76DAC00A37EDA /* DesignCodeAppHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E229CA2BD76DAC00A37EDA /* DesignCodeAppHeroView.swift */; };
+		68E229CD2BD76DBA00A37EDA /* DesignCodeAppBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E229CC2BD76DBA00A37EDA /* DesignCodeAppBookView.swift */; };
 		6AA4D5C3A68035F11BCA6BC0 /* Pods_UIKitDesignLibraryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A052787D92CFA0ED682B9847 /* Pods_UIKitDesignLibraryTests.framework */; };
 		C74194CEB2269DC47CC5F0E6 /* Pods_UIKitDesignLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DFF7B20D538388B60D44FF /* Pods_UIKitDesignLibrary.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +76,11 @@
 
 /* Begin PBXFileReference section */
 		30DFF7B20D538388B60D44FF /* Pods_UIKitDesignLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitDesignLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		680C54182BFC8E61000B0DAB /* MyCategoryViewContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryViewContainerView.swift; sourceTree = "<group>"; };
+		6853B3EE2BEB1CFE007AC577 /* MyCategoryTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCategoryTestViewController.swift; sourceTree = "<group>"; };
+		6853B3F02BEB33C6007AC577 /* MyCategoryViewTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryViewTabView.swift; sourceTree = "<group>"; };
+		6873349E2BEB562000343ADD /* MyCategoryViewBaseTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryViewBaseTab.swift; sourceTree = "<group>"; };
+		687334A02BEB567400343ADD /* MyCategoryViewTitleTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryViewTitleTab.swift; sourceTree = "<group>"; };
 		6893F4032BC9622A00A958D6 /* UIKitDesignLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDesignLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6893F4062BC9622A00A958D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6893F4082BC9622A00A958D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,8 +123,8 @@
 		68E229B92BD6B9E800A37EDA /* DesignCodeAppHomePageBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignCodeAppHomePageBuilder.swift; sourceTree = "<group>"; };
 		68E229BC2BD6B9E800A37EDA /* DesignCodeAppHomePageInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignCodeAppHomePageInteractor.swift; sourceTree = "<group>"; };
 		68E229BD2BD6B9E800A37EDA /* DesignCodeAppHomePageDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignCodeAppHomePageDataSource.swift; sourceTree = "<group>"; };
-		68E229CA2BD76DAC00A37EDA /* HeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroView.swift; sourceTree = "<group>"; };
-		68E229CC2BD76DBA00A37EDA /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		68E229CA2BD76DAC00A37EDA /* DesignCodeAppHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeAppHeroView.swift; sourceTree = "<group>"; };
+		68E229CC2BD76DBA00A37EDA /* DesignCodeAppBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeAppBookView.swift; sourceTree = "<group>"; };
 		92B83528D811DBF85508B635 /* Pods-UIKitDesignLibraryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitDesignLibraryTests.release.xcconfig"; path = "Target Support Files/Pods-UIKitDesignLibraryTests/Pods-UIKitDesignLibraryTests.release.xcconfig"; sourceTree = "<group>"; };
 		A052787D92CFA0ED682B9847 /* Pods_UIKitDesignLibraryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitDesignLibraryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF2190AE2A1FE264AEB6C05 /* Pods-UIKitDesignLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitDesignLibrary.release.xcconfig"; path = "Target Support Files/Pods-UIKitDesignLibrary/Pods-UIKitDesignLibrary.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +189,7 @@
 		6893F3FA2BC9622A00A958D6 = {
 			isa = PBXGroup;
 			children = (
+				6893F4642BC9630400A958D6 /* GridCollectionView */,
 				6893F4052BC9622A00A958D6 /* UIKitDesignLibrary */,
 				6893F41C2BC9622C00A958D6 /* UIKitDesignLibraryTests */,
 				6893F4262BC9622C00A958D6 /* UIKitDesignLibraryUITests */,
@@ -303,7 +314,6 @@
 			children = (
 				6893F4602BC9630400A958D6 /* TimeLineView */,
 				6893F4622BC9630400A958D6 /* TriangleView */,
-				6893F4642BC9630400A958D6 /* GridCollectionView */,
 				6893F4672BC9630400A958D6 /* BubbleView */,
 				6893F4692BC9630400A958D6 /* GridCollectionWithInteractView */,
 				6893F46C2BC9630400A958D6 /* CategoryView */,
@@ -357,7 +367,12 @@
 		6893F46C2BC9630400A958D6 /* CategoryView */ = {
 			isa = PBXGroup;
 			children = (
+				6853B3EE2BEB1CFE007AC577 /* MyCategoryTestViewController.swift */,
 				6893F46D2BC9630400A958D6 /* MyCategoryView.swift */,
+				6853B3F02BEB33C6007AC577 /* MyCategoryViewTabView.swift */,
+				6873349E2BEB562000343ADD /* MyCategoryViewBaseTab.swift */,
+				687334A02BEB567400343ADD /* MyCategoryViewTitleTab.swift */,
+				680C54182BFC8E61000B0DAB /* MyCategoryViewContainerView.swift */,
 			);
 			path = CategoryView;
 			sourceTree = "<group>";
@@ -418,8 +433,8 @@
 		68E229B42BD6B9E800A37EDA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				68E229CA2BD76DAC00A37EDA /* HeroView.swift */,
-				68E229CC2BD76DBA00A37EDA /* BookView.swift */,
+				68E229CA2BD76DAC00A37EDA /* DesignCodeAppHeroView.swift */,
+				68E229CC2BD76DBA00A37EDA /* DesignCodeAppBookView.swift */,
 				68E229B72BD6B9E800A37EDA /* DesignCodeAppHomePageViewController.swift */,
 				68E229B52BD6B9E800A37EDA /* DesignCodeAppHomePageViewDataSource.swift */,
 				68E229B82BD6B9E800A37EDA /* DesignCodeAppHomePageViewEventHandler.swift */,
@@ -444,6 +459,7 @@
 			buildConfigurationList = 6893F42D2BC9622C00A958D6 /* Build configuration list for PBXNativeTarget "UIKitDesignLibrary" */;
 			buildPhases = (
 				5661EF5149C6633016B7F82F /* [CP] Check Pods Manifest.lock */,
+				6853B3E12BE66DD5007AC577 /* Lint Code */,
 				6893F3FF2BC9622A00A958D6 /* Sources */,
 				6893F4002BC9622A00A958D6 /* Frameworks */,
 				6893F4012BC9622A00A958D6 /* Resources */,
@@ -628,6 +644,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6853B3E12BE66DD5007AC577 /* Lint Code */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Code";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif [ -f ~/程序数据/SwiftLint/swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --config ~/程序数据/SwiftLint/swiftlint.yml --no-cache\n  else\n    echo \"warning: SwiftLint not installed,   download from https://github.com/realm/SwiftLint\"\n  fi\nelse\n  if which swiftlint > /dev/null; then\n    swiftlint --no-cache\n  else\n    echo \"warning: SwiftLint not installed,   download from https://github.com/realm/SwiftLint\"\n  fi\nfi\n";
+		};
 		7CBF5ABD67A2CEEFAE468941 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -680,20 +715,25 @@
 				68E229C92BD6B9E800A37EDA /* DesignCodeAppHomePageDataSource.swift in Sources */,
 				68E229C22BD6B9E800A37EDA /* DesignCodeAppHomePageViewDataSource.swift in Sources */,
 				6893F43D2BC962D400A958D6 /* AppRouter.swift in Sources */,
-				68E229CB2BD76DAC00A37EDA /* HeroView.swift in Sources */,
+				68E229CB2BD76DAC00A37EDA /* DesignCodeAppHeroView.swift in Sources */,
 				68E229C42BD6B9E800A37EDA /* DesignCodeAppHomePageViewController.swift in Sources */,
 				68E229BF2BD6B9E800A37EDA /* DesignCodeAppHomePagePresenter.swift in Sources */,
 				6893F47E2BC9630400A958D6 /* TimeLineView.swift in Sources */,
 				6893F4572BC962F100A958D6 /* ViperView.swift in Sources */,
 				6893F4542BC962F100A958D6 /* ViperBuilder.swift in Sources */,
+				687334A12BEB567400343ADD /* MyCategoryViewTitleTab.swift in Sources */,
+				6853B3EF2BEB1CFE007AC577 /* MyCategoryTestViewController.swift in Sources */,
+				6873349F2BEB562000343ADD /* MyCategoryViewBaseTab.swift in Sources */,
 				6893F4072BC9622A00A958D6 /* AppDelegate.swift in Sources */,
 				6893F4562BC962F100A958D6 /* ViperInteractor.swift in Sources */,
 				6893F45B2BC962F100A958D6 /* FlickrSearchResults.swift in Sources */,
+				680C54192BFC8E61000B0DAB /* MyCategoryViewContainerView.swift in Sources */,
+				6853B3F12BEB33C6007AC577 /* MyCategoryViewTabView.swift in Sources */,
 				6893F4852BC9630400A958D6 /* MyCategoryView.swift in Sources */,
 				6893F4582BC962F100A958D6 /* ViperViewEventHandler.swift in Sources */,
 				68E229C82BD6B9E800A37EDA /* DesignCodeAppHomePageInteractor.swift in Sources */,
 				6893F47F2BC9630400A958D6 /* TriangleView.swift in Sources */,
-				68E229CD2BD76DBA00A37EDA /* BookView.swift in Sources */,
+				68E229CD2BD76DBA00A37EDA /* DesignCodeAppBookView.swift in Sources */,
 				6893F4802BC9630400A958D6 /* GridPhotosViewController.swift in Sources */,
 				6893F4092BC9622A00A958D6 /* SceneDelegate.swift in Sources */,
 				6893F45D2BC962F100A958D6 /* Flickr.swift in Sources */,
@@ -889,8 +929,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -919,8 +958,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

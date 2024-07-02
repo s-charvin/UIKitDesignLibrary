@@ -15,7 +15,6 @@ extension UIViewController: Routable {
 }
 
 extension UIWindow: Routable {
-
     var viewController: UIViewController? {
         return self.rootViewController
     }
@@ -54,7 +53,6 @@ protocol ViperRouter: AnyObject {
 /// addChildViewController: 将 ViewController 添加为父 ViewController 的子 ViewController
 /// removeChildViewController: 将 ViewController 从父 ViewController 的子 ViewController 中移除
 extension ViperRouter {
-
     // TODO: 子视图控制器的添加和移除和多窗口视图管理
     // static func addChild(_ childViewController: Routable, to parentViewController: Routable, into containerView: UIView?) throws
     // static func removeChild(_ childViewController: Routable)
@@ -72,11 +70,15 @@ extension ViperRouter {
             assertionFailure("Destination view controller is not embedded in a UINavigationController")
             return
         }
-        navigationController.pushViewController(viewController.viewController!, animated: animated)
+        guard let vcVc = viewController.viewController else {
+            assertionFailure("View controller is not embedded in a UINavigationController")
+            return
+        }
+        navigationController.pushViewController(vcVc, animated: animated)
     }
 
     // 将视图控制器从其所在的导航堆栈中移除
-    static func viperPop(_ viewController: Routable, animated: Bool) -> Routable?  {
+    static func viperPop(_ viewController: Routable, animated: Bool) -> Routable? {
         guard let navigationController = viewController.viewController?.navigationController else {
             assertionFailure("View controller is not embedded in a UINavigationController")
             return nil
@@ -86,23 +88,24 @@ extension ViperRouter {
 
     // 将一个视图控制器暂时推送到另一个视图控制器的模态堆栈中。
     static func viperPresent(_ viewControllerToPresent: Routable, from source: Routable, animated: Bool, completion: (() -> Void)?) {
-
-        let vc = viewControllerToPresent.viewController
+        guard let vcToPresent = viewControllerToPresent.viewController else {
+            assertionFailure("View controller is not embedded in a UINavigationController")
+            return
+        }
         let sourceVC = source.viewController
 
         if let navigationController = sourceVC?.navigationController {
-            navigationController.present(vc!, animated: animated, completion: completion)
+            navigationController.present(vcToPresent, animated: animated, completion: completion)
         } else {
-            sourceVC?.present(vc!, animated: animated, completion: completion)
+            sourceVC?.present(vcToPresent, animated: animated, completion: completion)
         }
     }
     // 从当前视图控制器模态堆栈中移除之前推送的视图控制器，返回到呈现它之前的状态。
     static func viperDismiss(_ viewController: Routable, animated: Bool, completion: (() -> Void)?) {
-        let vc = viewController.viewController
-        if vc?.presentingViewController == nil {
+        let vcVc = viewController.viewController
+        if vcVc?.presentingViewController == nil {
             assertionFailure("View controller is not presented")
         }
-        vc?.dismiss(animated: animated, completion: completion)
+        vcVc?.dismiss(animated: animated, completion: completion)
     }
 }
-

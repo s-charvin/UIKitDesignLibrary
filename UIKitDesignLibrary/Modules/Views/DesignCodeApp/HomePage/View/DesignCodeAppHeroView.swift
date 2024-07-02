@@ -7,14 +7,14 @@
 
 import UIKit
 
-class HeroView: UIView {
-
+class DesignCodeAppHeroView: UIView {
     let backgroundImage = UIImageView()
     let titleLabel = UILabel()
     let phoneImageView = UIImageView()
     let blurView = BlurView(effect: UIBlurEffect(style: .dark))
     let playButtonView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     let playButtonImageView = UIImageView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupViews()
@@ -95,7 +95,7 @@ class HeroView: UIView {
         self.playButtonView.clipsToBounds = true
         self.playButtonView.translatesAutoresizingMaskIntoConstraints = false
         self.playButtonView.contentView.addSubview(self.playButtonImageView)
-        
+
         self.addSubview(self.playButtonView)
 
         NSLayoutConstraint.activate([
@@ -113,7 +113,6 @@ class HeroView: UIView {
 
 
 class BlurView: UIVisualEffectView {
-
     let stackView = UIStackView()
     let watchStack = UIStackView()
     let watchLabel = UILabel()
@@ -161,13 +160,13 @@ class BlurView: UIVisualEffectView {
         self.stackView.alignment = .center
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.stackView.addArrangedSubview(self.watchStack)
-//        self.stackView.addArrangedSubview(self.downloadStack)
+        // self.stackView.addArrangedSubview(self.downloadStack)
         self.stackView.addArrangedSubview(self.searchStack)
 
         NSLayoutConstraint.activate([
             self.stackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             self.stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 20),
-            self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -20),
+            self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -20)
         ])
 
         // Initialize with default width
@@ -184,7 +183,7 @@ class BlurView: UIVisualEffectView {
         self.watchStack.addArrangedSubview(self.watchLabel)
         self.watchStack.addArrangedSubview(self.hoursLabel)
         self.watchStack.addArrangedSubview(self.videoLessonsLabel)
-        
+
         let lineView = UIView()
         lineView.backgroundColor = UIColor(red: 0.686, green: 0.278, blue: 0.725, alpha: 1)
         lineView.layer.cornerRadius = 3
@@ -193,7 +192,7 @@ class BlurView: UIVisualEffectView {
         NSLayoutConstraint.activate([
             lineView.heightAnchor.constraint(equalToConstant: 3),
             lineView.leadingAnchor.constraint(equalTo: self.watchStack.leadingAnchor),
-            lineView.trailingAnchor.constraint(equalTo: self.watchStack.trailingAnchor),
+            lineView.trailingAnchor.constraint(equalTo: self.watchStack.trailingAnchor)
         ])
 
         self.watchLabel.text = "WATCH"
@@ -205,7 +204,6 @@ class BlurView: UIVisualEffectView {
         self.videoLessonsLabel.text = "of video lessons"
         self.videoLessonsLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         self.videoLessonsLabel.textColor = .white
-
     }
 
     private func setupDownloadStack() {
@@ -226,7 +224,7 @@ class BlurView: UIVisualEffectView {
         NSLayoutConstraint.activate([
             lineView.heightAnchor.constraint(equalToConstant: 3),
             lineView.leadingAnchor.constraint(equalTo: self.downloadStack.leadingAnchor),
-            lineView.trailingAnchor.constraint(equalTo: self.downloadStack.trailingAnchor),
+            lineView.trailingAnchor.constraint(equalTo: self.downloadStack.trailingAnchor)
         ])
 
         self.downloadLabel.text = "DOWNLOAD"
@@ -258,7 +256,7 @@ class BlurView: UIVisualEffectView {
         NSLayoutConstraint.activate([
             lineView.heightAnchor.constraint(equalToConstant: 3),
             lineView.leadingAnchor.constraint(equalTo: self.searchStack.leadingAnchor),
-            lineView.trailingAnchor.constraint(equalTo: self.searchStack.trailingAnchor),
+            lineView.trailingAnchor.constraint(equalTo: self.searchStack.trailingAnchor)
         ])
 
         self.searchLabel.text = "SEARCH"
@@ -290,4 +288,3 @@ class BlurView: UIVisualEffectView {
         }
     }
 }
-

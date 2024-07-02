@@ -8,8 +8,7 @@
 import UIKit
 
 
-class BookView: UIView {
-
+class DesignCodeAppBookView: UIView {
     let imageView = UIImageView()
 
     override init(frame: CGRect) {

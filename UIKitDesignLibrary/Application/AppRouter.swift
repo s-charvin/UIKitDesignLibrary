@@ -7,9 +7,11 @@ class AppRouter: ViperRouter {
 }
 
 extension AppRouter: DesignCodeAppHomePageRouter {
-
     func viewForDesignCodeAppHomePage() -> UIViewController {
-        return AppRouter.container.designCodeAppHomePage()
+        return AppRouter.container.designCodeAppHomePage() ?? UIViewController()
+    }
+    func viewForMyCategoryTest() -> UIViewController {
+        return AppRouter.container.myCategory()
     }
 }
 
@@ -23,30 +25,40 @@ extension Container {
     // 空白欢迎页
     var blankPage: Factory<UIViewController> {
         Factory(self) {
-            let view_ = UIViewController()
-            view_.view.backgroundColor = .white
+            let pageView = UIViewController()
+            pageView.view.backgroundColor = .white
             let label = UILabel()
             label.text = "Welcome to ...."
             label.textColor = .black
             label.font = UIFont.systemFont(ofSize: 20)
             label.textAlignment = .center
             label.translatesAutoresizingMaskIntoConstraints = false
-            view_.view.addSubview(label)
+            pageView.view.addSubview(label)
             NSLayoutConstraint.activate([
-                label.centerXAnchor.constraint(equalTo: view_.view.centerXAnchor),
-                label.centerYAnchor.constraint(equalTo: view_.view.centerYAnchor)
+                label.centerXAnchor.constraint(equalTo: pageView.view.centerXAnchor),
+                label.centerYAnchor.constraint(equalTo: pageView.view.centerYAnchor)
             ])
-            return view_
+            return pageView
         }
     }
-    
-    var designCodeAppHomePage: Factory<DesignCodeAppHomePageViewController> {
+    // DesignCodeAppHomePage 页面
+
+    var designCodeAppHomePage: Factory<DesignCodeAppHomePageViewController?> {
         Factory(self) {
-            DesignCodeAppHomePageModuleBuilder.getView(router: self.router()) as! DesignCodeAppHomePageViewController
+            guard let viewController = DesignCodeAppHomePageModuleBuilder.getView(
+                router: self.router()) as? DesignCodeAppHomePageViewController
+            else {
+                return nil
+            }
+            return viewController
         }.singleton
     }
 
+    // MyCategory 测试页面
+    var myCategory: Factory<MyCategoryTestViewController> {
+        Factory(self) {
+            let viewController = MyCategoryTestViewController()
+            return viewController
+        }
+    }
 }
-
-
-

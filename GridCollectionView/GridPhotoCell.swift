@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 class GridPhotoCell: UICollectionViewCell {
     static let reuseIdentifier = "GridPhotoCell"
     let imageView = UIImageView()
@@ -22,7 +20,7 @@ class GridPhotoCell: UICollectionViewCell {
             self.imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             self.imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             self.imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            self.imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            self.imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
 
@@ -47,7 +45,7 @@ class GridHeaderView: UICollectionReusableView {
     }
 
     private func setupViews() {
-      self.backgroundColor = .gray
+        self.backgroundColor = .gray
         // 配置 titleLabel
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
@@ -60,7 +58,7 @@ class GridHeaderView: UICollectionReusableView {
             self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])
     }
 
