@@ -1,7 +1,6 @@
 //: A UIKit based Playground for presenting user interface
 
 import UIKit
-// import PlaygroundSupport
 
 class CarouselCardWithDescriptionView: UIViewController {
     let cardView = UIView()
@@ -105,5 +104,3 @@ class CarouselCardWithDescriptionView: UIViewController {
         animator.startAnimation()
     }
 }
-
-// PlaygroundPage.current.liveView = CarouselCardWithDescriptionView()

@@ -18,7 +18,7 @@ extension  ViperBuilder {
         let wireframe = wireframe
 
         // View setup
-        view.viewDataSource = presenter
+        view.dataSource = presenter
         view.eventHandler = presenter
 
         // Presenter setup

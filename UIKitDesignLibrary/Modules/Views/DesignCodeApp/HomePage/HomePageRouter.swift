@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol DesignCodeAppHomePageRouter: ViperRouter {
-    func viewForDesignCodeAppHomePage() -> UIViewController
+    func viewForHomePage() -> UIViewController
 }

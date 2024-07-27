@@ -11,15 +11,15 @@ class TriangleView: UIView {
     var fillColor: CGColor?
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
+        self.setupViews()
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupViews()
+        self.setupViews()
     }
     private func setupViews() {
         // 设置气泡背景
-        backgroundColor = .clear
+        self.backgroundColor = .clear
     }
     override func draw(_ rect: CGRect) {
         super.draw(rect)

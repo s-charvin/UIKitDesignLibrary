@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ViperPresenter: ViperViewEventHandler {
+protocol ViperPresenter: AnyObject {
     var view: ViperView? { get set } // weak
 
     var wireframe: ViperWireframe? { get set }

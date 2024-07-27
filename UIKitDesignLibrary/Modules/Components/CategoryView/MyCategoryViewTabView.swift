@@ -95,9 +95,9 @@ class MyCategoryViewTabView: UIViewController {
         case horizontal, vertical
     }
 
-    var viewDataSource: MyCategoryViewTabViewDataSource? {
+    var dataSource: MyCategoryViewTabViewDataSource? {
         didSet {
-            if let tabItems = self.viewDataSource?.items() {
+            if let tabItems = self.dataSource?.items() {
                 for (index, item) in tabItems {
                     item.isSelected = index == self.selectedIndex
                 }
@@ -140,22 +140,22 @@ class MyCategoryViewTabView: UIViewController {
         super.viewDidLayoutSubviews()
         self.collectionView.frame = self.view.bounds
 
-        let itemSpacing = self.viewDataSource?.itemSpacing ?? 0
-        let tabContentInset = self.viewDataSource?.tabContentInset ?? UIEdgeInsets.zero
-        let spacingAverageEnabled = self.viewDataSource?.spacingAverageEnabled ?? false
+        let itemSpacing = self.dataSource?.itemSpacing ?? 0
+        let tabContentInset = self.dataSource?.tabContentInset ?? UIEdgeInsets.zero
+        let spacingAverageEnabled = self.dataSource?.spacingAverageEnabled ?? false
         
         var totalItemWidth: CGFloat = 0
         var totalContentWidth: CGFloat = 0
 
         totalContentWidth = tabContentInset.left + tabContentInset.right
-        for index in 0..<(self.viewDataSource?.count() ?? 0) {
-            let item = self.viewDataSource?[index]
+        for index in 0..<(self.dataSource?.count() ?? 0) {
+            let item = self.dataSource?[index]
             totalItemWidth += item?.itemWidth ?? 0
             totalContentWidth += item?.itemWidth ?? 0 + itemSpacing
         }
 
         if spacingAverageEnabled && totalContentWidth < self.collectionView.bounds.width {
-            var spaceCount = (self.viewDataSource?.count() ?? 0) - 1
+            var spaceCount = (self.dataSource?.count() ?? 0) - 1
             if tabContentInset.left > 0 {
                 spaceCount += 1
             }
@@ -163,13 +163,13 @@ class MyCategoryViewTabView: UIViewController {
                 spaceCount += 1
             }
             let averageSpacing = (self.collectionView.bounds.width - totalItemWidth) / CGFloat(spaceCount)
-            self.viewDataSource?.tabContentInset = UIEdgeInsets(
+            self.dataSource?.tabContentInset = UIEdgeInsets(
                 top: tabContentInset.top,
                 left: averageSpacing,
                 bottom: tabContentInset.bottom,
                 right: averageSpacing
             )
-            self.viewDataSource?.itemSpacing = averageSpacing
+            self.dataSource?.itemSpacing = averageSpacing
             totalContentWidth = self.collectionView.bounds.width
         }
 
@@ -178,7 +178,7 @@ class MyCategoryViewTabView: UIViewController {
 
     func setSelectedIndex(_ index: Int, animated: Bool) {
         let oldIndex = self.selectedIndex
-        if index < 0 || index >= (self.viewDataSource?.count() ?? 0) {
+        if index < 0 || index >= (self.dataSource?.count() ?? 0) {
             return
         }
         if index == self.selectedIndex {
@@ -187,10 +187,10 @@ class MyCategoryViewTabView: UIViewController {
         self.selectedIndex = index
 
         // 刷新选中状态
-        guard let selectedTabItem = self.viewDataSource?[self.selectedIndex] else {
+        guard let selectedTabItem = self.dataSource?[self.selectedIndex] else {
             return
         }
-        if let oldTabItem = self.viewDataSource?[oldIndex] {
+        if let oldTabItem = self.dataSource?[oldIndex] {
             oldTabItem.isSelected = false
         }
         selectedTabItem.isSelected = true
@@ -216,14 +216,14 @@ class MyCategoryViewTabView: UIViewController {
 
     // 刷新布局
     func refreshLayout() {
-        let itemSpacing = self.viewDataSource?.itemSpacing ?? 0
-        let tabContentInset = self.viewDataSource?.tabContentInset ?? UIEdgeInsets.zero
+        let itemSpacing = self.dataSource?.itemSpacing ?? 0
+        let tabContentInset = self.dataSource?.tabContentInset ?? UIEdgeInsets.zero
 
         var selectedItemX = tabContentInset.left
         for index in 0..<self.selectedIndex {
-            selectedItemX += (self.viewDataSource?[index]?.itemWidth ?? 0) + itemSpacing
+            selectedItemX += (self.dataSource?[index]?.itemWidth ?? 0) + itemSpacing
         }
-        let selectedItemWidth = self.viewDataSource?[self.selectedIndex]?.itemWidth ?? 0
+        let selectedItemWidth = self.dataSource?[self.selectedIndex]?.itemWidth ?? 0
         let totalContentWidth = self.collectionView.contentSize.width
 
 //        var totalContentWidth: CGFloat = 0
@@ -255,25 +255,25 @@ class MyCategoryViewTabView: UIViewController {
             scrollTo index: \(index),
             percent: \(percent)
         """)
-        if index < 0 || index >= (self.viewDataSource?.count() ?? 0) {
+        if index < 0 || index >= (self.dataSource?.count() ?? 0) {
             return
         }
         // 滚动到指定位置
-        let itemSpacing = self.viewDataSource?.itemSpacing ?? 0
-        let tabContentInset = self.viewDataSource?.tabContentInset ?? UIEdgeInsets.zero
+        let itemSpacing = self.dataSource?.itemSpacing ?? 0
+        let tabContentInset = self.dataSource?.tabContentInset ?? UIEdgeInsets.zero
 
         var selectedItemX = tabContentInset.left
         for i in 0..<self.selectedIndex {
-            selectedItemX += (self.viewDataSource?[i]?.itemWidth ?? 0) + itemSpacing
+            selectedItemX += (self.dataSource?[i]?.itemWidth ?? 0) + itemSpacing
         }
         // 目的 index 在当前选项左侧或右侧, 需要设置的偏移是不一样的
         let minTargetOffset = 0
         let maxTargetOffset = self.collectionView.contentSize.width - self.collectionView.bounds.width
-        var targetOffset = selectedItemX - self.collectionView.bounds.width / 2 + (self.viewDataSource?[self.selectedIndex]?.itemWidth ?? 0) / 2
+        var targetOffset = selectedItemX - self.collectionView.bounds.width / 2 + (self.dataSource?[self.selectedIndex]?.itemWidth ?? 0) / 2
         if index < self.selectedIndex {
-            targetOffset += percent * (self.viewDataSource?[index]?.itemWidth ?? 0) + itemSpacing
+            targetOffset += percent * (self.dataSource?[index]?.itemWidth ?? 0) + itemSpacing
         } else {
-            targetOffset += percent * (self.viewDataSource?[self.selectedIndex]?.itemWidth ?? 0) + itemSpacing
+            targetOffset += percent * (self.dataSource?[self.selectedIndex]?.itemWidth ?? 0) + itemSpacing
         }
         targetOffset = max(min(maxTargetOffset, targetOffset), CGFloat(minTargetOffset))
 
@@ -313,7 +313,7 @@ extension MyCategoryViewTabView: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        guard let dataSource = self.viewDataSource else {
+        guard let dataSource = self.dataSource else {
             return 0
         }
         return dataSource.tabView(self, numberOfItemsInSection: section)
@@ -323,7 +323,7 @@ extension MyCategoryViewTabView: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let dataSource = self.viewDataSource else {
+        guard let dataSource = self.dataSource else {
             // dataSource 不存在时, 理应 cell 数量为 0
             // 因此不会进入此分支, 但为了保险起见, 还是返回一个默认的随机背景 cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "defaultCell", for: indexPath)
@@ -346,7 +346,7 @@ extension MyCategoryViewTabView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        guard let dataSource = self.viewDataSource else {
+        guard let dataSource = self.dataSource else {
             return UIEdgeInsets.zero
         }
         return dataSource.tabView(self, insetForSectionAt: section)
@@ -357,7 +357,7 @@ extension MyCategoryViewTabView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        guard let dataSource = self.viewDataSource else {
+        guard let dataSource = self.dataSource else {
             return CGSize.zero
         }
         return dataSource.tabView(self, sizeForItemAt: indexPath)
@@ -368,7 +368,7 @@ extension MyCategoryViewTabView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
-        guard let dataSource = self.viewDataSource else {
+        guard let dataSource = self.dataSource else {
             return 0
         }
         return dataSource.tabView(self, minimumLineSpacingForSectionAt: section)
@@ -379,7 +379,7 @@ extension MyCategoryViewTabView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int
     ) -> CGFloat {
-        guard let dataSource = self.viewDataSource else {
+        guard let dataSource = self.dataSource else {
             return 0
         }
         return dataSource.tabView(self, minimumInteritemSpacingForSectionAt: section)

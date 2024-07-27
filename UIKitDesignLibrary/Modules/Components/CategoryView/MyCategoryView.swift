@@ -40,7 +40,7 @@ class MyCategoryView: UIViewController {
     var tabDataSource: MyCategoryViewTabViewDataSource? {
         didSet {
             guard let tabDataSource = self.tabDataSource else { return }
-            self.tabView.viewDataSource = tabDataSource
+            self.tabView.dataSource = tabDataSource
             tabDataSource.registerCellClass(in: self.tabView)
         }
     }
@@ -48,7 +48,7 @@ class MyCategoryView: UIViewController {
     var containerDataSource: MyCategoryViewContainerViewDataSource? {
         didSet {
             guard let containerDataSource = self.containerDataSource else { return }
-            self.containerView.viewDataSource = containerDataSource
+            self.containerView.dataSource = containerDataSource
         }
     }
 

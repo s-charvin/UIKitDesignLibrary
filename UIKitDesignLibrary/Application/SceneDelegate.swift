@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         self.window?.backgroundColor = .white
 
-        self.window?.rootViewController = AppRouter.shared.viewForMyCategoryTest()
+        self.window?.rootViewController = AppRouter.shared.viewForHomePage()
         self.window?.makeKeyAndVisible()
     }
 

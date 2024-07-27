@@ -7,11 +7,32 @@ class AppRouter: ViperRouter {
 }
 
 extension AppRouter: DesignCodeAppHomePageRouter {
-    func viewForDesignCodeAppHomePage() -> UIViewController {
+    func viewForHomePage() -> UIViewController {
         return AppRouter.container.designCodeAppHomePage() ?? UIViewController()
     }
+
     func viewForMyCategoryTest() -> UIViewController {
         return AppRouter.container.myCategory()
+    }
+}
+
+extension AppRouter: DesignCodeAppContentPageRouter {
+    func viewForContentPage(title: String, caption: String, content: String, image: String, progress: String) -> UIViewController {
+        guard let viewController = AppRouter.container.designCodeAppContentPage() else {
+            return UIViewController()
+        }
+        viewController.heroView.titleLabel.text = title
+        viewController.heroView.captionLabel.text = caption
+        viewController.heroView.contentLabel.text = content
+        viewController.heroView.backgroundImageView.image = UIImage(named: image)
+        viewController.heroView.progressView.text = progress
+        return viewController
+    }
+}
+
+extension AppRouter: TimeLineRouter {
+    func viewForTimeLine() -> UIViewController {
+        return AppRouter.container.timeLine()
     }
 }
 
@@ -41,12 +62,28 @@ extension Container {
             return pageView
         }
     }
-    // DesignCodeAppHomePage 页面
 
-    var designCodeAppHomePage: Factory<DesignCodeAppHomePageViewController?> {
+    // DesignCodeAppHomePage 页面
+    var designCodeAppHomePage: Factory<DesignCodeApp.HomePageViewController?> {
         Factory(self) {
-            guard let viewController = DesignCodeAppHomePageModuleBuilder.getView(
-                router: self.router()) as? DesignCodeAppHomePageViewController
+            guard let viewController = DesignCodeApp.HomePageModuleBuilder.getView(
+                router: self.router()) as? DesignCodeApp.HomePageViewController
+            else {
+                return nil
+            }
+
+            DesignCodeApp.HomePageModuleBuilder.injectDataService(
+                for: viewController,
+                dataService: DesignCodeAppDataSevice())
+            return viewController
+        }.singleton
+    }
+
+    // DesignCodeAppContentPage 页面
+    var designCodeAppContentPage: Factory<DesignCodeApp.ContentPageViewController?> {
+        Factory(self) {
+            guard let viewController = DesignCodeApp.ContentPageModuleBuilder.getView(
+                router: self.router()) as? DesignCodeApp.ContentPageViewController
             else {
                 return nil
             }
@@ -58,6 +95,14 @@ extension Container {
     var myCategory: Factory<MyCategoryTestViewController> {
         Factory(self) {
             let viewController = MyCategoryTestViewController()
+            return viewController
+        }
+    }
+
+    // TimeLine 展示页面
+    var timeLine: Factory<TimeLineViewController> {
+        Factory(self) {
+            let viewController = TimeLineViewController()
             return viewController
         }
     }

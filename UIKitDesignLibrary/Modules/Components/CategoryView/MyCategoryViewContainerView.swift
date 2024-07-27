@@ -116,9 +116,9 @@ class MyCategoryViewContainerView: UIViewController {
 
     var contentView: UICollectionView
 
-    var viewDataSource: MyCategoryViewContainerViewDataSource? {
+    var dataSource: MyCategoryViewContainerViewDataSource? {
         didSet {
-            self.viewDataSource?.registerCellClass(in: self.contentView)
+            self.dataSource?.registerCellClass(in: self.contentView)
             self.contentView.reloadData()
         }
     }
@@ -170,7 +170,7 @@ class MyCategoryViewContainerView: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        guard let viewDataSource = self.viewDataSource, !viewDataSource.isEmpty() else {
+        guard let dataSource = self.dataSource, !dataSource.isEmpty() else {
             return
         }
 
@@ -214,11 +214,11 @@ class MyCategoryViewContainerView: UIViewController {
 
 extension MyCategoryViewContainerView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewDataSource?.count() ?? 0
+        return self.dataSource?.count() ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return self.viewDataSource?.containerView(self.contentView, cellForItemAt: indexPath) ?? UICollectionViewCell()
+        return self.dataSource?.containerView(self.contentView, cellForItemAt: indexPath) ?? UICollectionViewCell()
     }
 }
 
@@ -234,7 +234,7 @@ extension MyCategoryViewContainerView: UICollectionViewDelegate {
         guard scrollView.isTracking || scrollView.isDragging else {
             return
         }
-        guard let viewDataSource = self.viewDataSource, !viewDataSource.isEmpty() else {
+        guard let viewDataSource = self.dataSource, !viewDataSource.isEmpty() else {
             return
         }
 
